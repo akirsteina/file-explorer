@@ -11,7 +11,7 @@ const FileExplorerContent = ({ loading = false, error = null, data = [] }) => {
     <StyledContent>
       {loading && (
         <StyledLoadingBox>
-          <CircularProgress sx={{ color: "#173450" }} />
+          <StyledCircularProgress />
         </StyledLoadingBox>
       )}
       {error && <Typography variant="body2">{error}</Typography>}
@@ -54,6 +54,10 @@ const StyledLoadingBox = styled(Box)({
   display: "flex",
   justifyContent: "center",
   margin: "1rem",
+});
+
+const StyledCircularProgress = styled(CircularProgress)({
+  color: "#173450",
 });
 
 export default FileExplorerContent;

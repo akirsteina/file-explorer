@@ -13,7 +13,7 @@ const FileExplorer = () => {
   );
 
   useEffect(() => {
-    if (initialLoad === false) {
+    if (!initialLoad) {
       dispatch(fetchFilePaths()).then(({ error }) => {
         if (error?.message) {
           error = ("Failed to fetch file paths:", error.message);

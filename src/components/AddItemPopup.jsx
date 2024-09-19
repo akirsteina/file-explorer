@@ -22,8 +22,9 @@ const AddItemPopup = ({
   const [error, setError] = useState("");
 
   const handleInputChange = (event) => {
-    setItemName(event.target.value);
-    if (error && handleValidation(event.target.value)) {
+    const { value } = event.target;
+    setItemName(value);
+    if (error && handleValidation(value)) {
       setError("");
     }
   };
@@ -60,20 +61,15 @@ const AddItemPopup = ({
       aria-describedby="modal-description"
     >
       <ModalContentWrapper>
-        <Box display="flex" justifyContent="space-between" alignItems="center">
-          <Typography
-            id="modal-title"
-            variant="h6"
-            component="h2"
-            sx={{ color: "#173450" }}
-          >
+        <StyledHeader>
+          <Typography id="modal-title" variant="h6" component="h2">
             {title}
           </Typography>
           <IconButton onClick={handleCloseClick}>
             <CloseIcon />
           </IconButton>
-        </Box>
-        <TextField
+        </StyledHeader>
+        <StyledTextField
           fullWidth
           variant="outlined"
           placeholder={placeholder}
@@ -81,36 +77,19 @@ const AddItemPopup = ({
           onChange={handleInputChange}
           error={!!error}
           helperText={error}
-          sx={{
-            mt: "2rem",
-            "& .MuiOutlinedInput-root": {
-              "&.Mui-focused fieldset": {
-                borderColor: "#173450",
-              },
-            },
-          }}
         />
-        <Box
-          display="flex"
-          justifyContent="flex-end"
-          sx={{ mt: "2rem", gap: "1rem" }}
-        >
-          <Button
-            variant="outlined"
-            onClick={handleCloseClick}
-            sx={{ border: "1px solid #173450", color: "#173450" }}
-          >
+        <StyledActionsWrapper>
+          <CancelButton variant="outlined" onClick={handleCloseClick}>
             Cancel
-          </Button>
-          <Button
+          </CancelButton>
+          <SaveButton
             variant="contained"
             onClick={handleSaveClick}
-            sx={{ backgroundColor: "#173450" }}
             disabled={!itemName.trim()}
           >
             Save
-          </Button>
-        </Box>
+          </SaveButton>
+        </StyledActionsWrapper>
       </ModalContentWrapper>
     </Modal>
   );
@@ -126,6 +105,38 @@ const ModalContentWrapper = styled(Box)({
   border: "2px solid #173450",
   boxShadow: 24,
   padding: "2rem",
+});
+
+const StyledHeader = styled(Box)({
+  display: "flex",
+  justifyContent: "space-between",
+  alignItems: "center",
+  color: "#173450",
+});
+
+const StyledActionsWrapper = styled(Box)({
+  display: "flex",
+  justifyContent: "flex-end",
+  marginTop: "2rem",
+  gap: "1rem",
+});
+
+const StyledTextField = styled(TextField)({
+  marginTop: "2rem",
+  "& .MuiOutlinedInput-root": {
+    "&.Mui-focused fieldset": {
+      borderColor: "#173450",
+    },
+  },
+});
+
+const CancelButton = styled(Button)({
+  border: "1px solid #173450",
+  color: "#173450",
+});
+
+const SaveButton = styled(Button)({
+  backgroundColor: "#173450",
 });
 
 export default AddItemPopup;

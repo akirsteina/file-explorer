@@ -36,35 +36,32 @@ const FileExplorerHeader = ({ loading = false, error = null }) => {
       <Box>
         <Tooltip title="Add file">
           <span>
-            <IconButton
+            <StyledIconButton
               onClick={() => openAddFileModal()}
-              sx={{ color: "#173450" }}
               disabled={loading || error}
             >
               <AddIcon />
-            </IconButton>
+            </StyledIconButton>
           </span>
         </Tooltip>
         <Tooltip title="Add folder">
           <span>
-            <IconButton
+            <StyledIconButton
               onClick={() => openAddFolderModal()}
-              sx={{ color: "#173450" }}
               disabled={loading || error}
             >
               <FolderIcon />
-            </IconButton>
+            </StyledIconButton>
           </span>
         </Tooltip>
         <Tooltip title="Reset File Explorer">
           <span>
-            <IconButton
+            <StyledIconButton
               onClick={toggleResetPopup}
-              sx={{ color: "#173450" }}
               disabled={loading || error}
             >
               <RefreshIcon />
-            </IconButton>
+            </StyledIconButton>
           </span>
         </Tooltip>
       </Box>
@@ -86,6 +83,10 @@ const StyledHeader = styled(Box)({
   justifyContent: "space-between",
   alignItems: "center",
   padding: "1rem",
+});
+
+const StyledIconButton = styled(IconButton)({
+  color: "#173450",
 });
 
 export default FileExplorerHeader;

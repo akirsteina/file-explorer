@@ -2,7 +2,7 @@ import React from "react";
 import SvgIcon from "@mui/material/SvgIcon";
 
 const IconPdf = ({ size = "", ...props }) => (
-  <SvgIcon {...props} style={{ fontSize: size }}>
+  <SvgIcon {...props} sx={{ fontSize: size, paddingRight: "16px" }}>
     <svg
       className="w-6 h-6 text-gray-800 dark:text-white"
       aria-hidden="true"
