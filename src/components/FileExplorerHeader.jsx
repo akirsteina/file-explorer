@@ -35,34 +35,28 @@ const FileExplorerHeader = ({ loading = false, error = null }) => {
       </Typography>
       <Box>
         <Tooltip title="Add file">
-          <span>
-            <StyledIconButton
-              onClick={() => openAddFileModal()}
-              disabled={loading || error}
-            >
-              <AddIcon />
-            </StyledIconButton>
-          </span>
+          <StyledIconButton
+            onClick={() => openAddFileModal()}
+            disabled={loading || error}
+          >
+            <AddIcon />
+          </StyledIconButton>
         </Tooltip>
         <Tooltip title="Add folder">
-          <span>
-            <StyledIconButton
-              onClick={() => openAddFolderModal()}
-              disabled={loading || error}
-            >
-              <FolderIcon />
-            </StyledIconButton>
-          </span>
+          <StyledIconButton
+            onClick={() => openAddFolderModal()}
+            disabled={loading || error}
+          >
+            <FolderIcon />
+          </StyledIconButton>
         </Tooltip>
         <Tooltip title="Reset File Explorer">
-          <span>
-            <StyledIconButton
-              onClick={toggleResetPopup}
-              disabled={loading || error}
-            >
-              <RefreshIcon />
-            </StyledIconButton>
-          </span>
+          <StyledIconButton
+            onClick={toggleResetPopup}
+            disabled={loading || error}
+          >
+            <RefreshIcon />
+          </StyledIconButton>
         </Tooltip>
       </Box>
       <DeletePopup
